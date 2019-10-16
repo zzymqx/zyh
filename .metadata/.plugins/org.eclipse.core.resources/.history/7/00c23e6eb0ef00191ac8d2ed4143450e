@@ -1,0 +1,36 @@
+package com.aftvc.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.aftvc.bean.Customer;
+import com.aftvc.bean.CustomerExample;
+import com.aftvc.bean.CustomerExample.Criteria;
+import com.aftvc.dao.CustomerMapper;
+import com.aftvc.service.CustomerService;
+
+@Service
+@Transactional
+public class CustomerServiceImpl implements CustomerService{
+
+		@Autowired
+		CustomerMapper customerMapper;
+		
+		@Override
+		public Customer findCustomerById(Integer id) {
+			CustomerExample customerExample=new CustomerExample();
+			Criteria criteria=customerExample.createCriteria();
+			criteria.andIdEqualTo(id);
+			List<Customer> customers=customerMapper.selectByExample(customerExample);
+			Customer customer=new Customer();
+			for(Customer customer1:customers) {
+				customer=customer1;
+			}
+			return customer;
+			
+		}
+
+}

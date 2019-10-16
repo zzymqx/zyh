@@ -1,0 +1,16 @@
+package com.aftvc.service;
+
+import cn.itcast.travel.domain.User;
+
+public interface UserService {
+    /**
+     * ×¢²áÓÃ»§
+     * @param user
+     * @return
+     */
+    boolean regist(User user);
+
+    boolean active(String code);
+
+    User login(User user);
+}

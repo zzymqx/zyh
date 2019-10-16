@@ -1,0 +1,10 @@
+package com.aftvc.service.impl;
+
+import java.util.List;
+
+import com.aftvc.bean.Category;
+
+public interface CategoryService {
+
+    public List<Category> findAll();
+}
